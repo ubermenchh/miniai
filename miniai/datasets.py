@@ -102,6 +102,6 @@ class DataLoaders:
     def __init__(self, *dls): self.train, self.valid = dls[:2]
     
     @classmethod
-    def from_dd(cls, dd, batch_size, as_tuple=True, **kwargs):
+    def from_dd(cls, dd, batch_size, as_tuple=True, *kwargs):
         f = collate_dict(dd['train'])
         return cls(*get_dls(*dd.values(), bs=batch_size, collate_fn=f, **kwargs))
